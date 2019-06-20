@@ -1,35 +1,22 @@
 {
-  "name": "react-native-story",
-  "description": "Instagram story for react-native",
-  "main": "src/index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ue/react-native-story"
-  },
-  "keywords": [
-    "react-native",
-    "instagram",
-    "story",
-    "snapchat"
-  ],
-  "author": "Kevin Guebert",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.comue/react-native-story/issues"
-  },
-  "homepage": "https://github.com/ue/react-native-story",
-  "devDependencies": {
-    "@babel/runtime": "^7.4.5"
-  },
-  "version": "0.1.3",
-  "directories": {
-    "test": "tests"
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "expo-av": "^5.0.2",
-    "expo-camera": "^5.0.1",
-    "expo-permissions": "^5.0.1",
-    "react-native-modalbox": "^1.7.1"
-  }
+    "expo": "^33.0.0",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4",
+    "react-native-story": "./react-native-story"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.1.1"
+  },
+  "private": true
 }
