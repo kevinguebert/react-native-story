@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import Story from 'react-native-story';
+import { StyleSheet, View, TextInput } from "react-native";
+import Story from "react-native-story";
 
-const stories = [
+let stories = [
   {
     id: 1,
     avatar: "https://i.pravatar.cc/300",
@@ -35,10 +35,8 @@ const stories = [
         id: 1,
         type: "video",
         length: 3,
-        preview:
-          "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-        source:
-          "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+        preview: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+        source: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
         link: "",
         linkText: "",
         seen: false
@@ -86,22 +84,40 @@ const stories = [
         seen: false
       }
     ]
-  },
+  }
 ];
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Story
-        unPressedBorderColor="#e95950"
-        pressedBorderColor="#ebebeb"
-        stories={stories}
-        footerComponent={
-          <TextInput placeholder="Send message" placeholderTextColor="white" />
-        }
-      />
-    </View>
-  );
+export default class App extends React.Component {
+  state = {
+    stories: stories
+  };
+  watchedStory = index => {
+    let s = this.state.stories;
+    s[index].seen = true;
+    this.setState({ stories: s });
+    console.log(this.state.stories[index]);
+    console.log("watched");
+  };
+  render() {
+    console.log("here");
+    console.log(this.state.stories[0]);
+    return (
+      <View style={styles.container}>
+        <Story
+          unPressedBorderColor="#e95950"
+          pressedBorderColor="#ebebeb"
+          stories={this.state.stories}
+          watchedStory={this.watchedStory}
+          footerComponent={
+            <TextInput
+              placeholder="Send message"
+              placeholderTextColor="white"
+            />
+          }
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

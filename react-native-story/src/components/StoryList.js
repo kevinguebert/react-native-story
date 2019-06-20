@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 // Components
-import StoryListItem from './StoryListItem';
+import StoryListItem from "./StoryListItem";
 
 export default class StoryList extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ export default class StoryList extends Component {
       <View style={styles.container}>
         <FlatList
           data={stories}
+          extraData={this.props}
           horizontal
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => (
@@ -38,7 +39,6 @@ export default class StoryList extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

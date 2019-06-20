@@ -4,7 +4,7 @@ import Modal from "react-native-modalbox";
 
 // Components
 import StoryList from "./StoryList";
-import Stories from './Stories';
+import Stories from "./Stories";
 
 export default class Story extends Component {
   constructor(props) {
@@ -16,11 +16,10 @@ export default class Story extends Component {
     };
   }
 
-  // Component Life Cycles
-
   // Component Functions
   _handleStoryItemPress = (item, index) => {
-    const { stories } = this.props;
+    const { stories, watchedStory } = this.props;
+    if (watchedStory) watchedStory(index);
 
     this.setState({ selectedStory: item });
 

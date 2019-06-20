@@ -5,25 +5,14 @@ import { View, Image, TouchableOpacity, Text, StyleSheet } from "react-native";
 import DEFAULT_AVATAR from "../assets/avatars/no_avatar.png";
 
 export default class StoryListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPressed: false
-    };
-  }
-
   _handleItemPress = item => {
     const { handleStoryItemPress } = this.props;
 
     if (handleStoryItemPress) handleStoryItemPress(item);
-
-    this.setState({ isPressed: true });
   };
 
   render() {
     const { item, unPressedBorderColor, pressedBorderColor } = this.props;
-    const { isPressed } = this.state;
-
 
     /**
      * Possible - use the "preview" image to showcase
@@ -34,7 +23,7 @@ export default class StoryListItem extends Component {
           onPress={() => this._handleItemPress(item)}
           style={[
             styles.avatarWrapper,
-            !isPressed
+            !item.seen
               ? {
                   borderColor: unPressedBorderColor
                     ? unPressedBorderColor
