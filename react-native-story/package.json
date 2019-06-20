@@ -31,6 +31,7 @@
     "expo-av": "^5.0.2",
     "expo-camera": "^5.0.1",
     "expo-permissions": "^5.0.1",
-    "react-native-modalbox": "^1.7.1"
+    "react-native-modalbox": "^1.7.1",
+    "react-native-swiper-flatlist": "^1.0.10"
   }
 }

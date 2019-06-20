@@ -5,9 +5,13 @@ import {
   Dimensions,
   Platform,
   View,
+  SafeAreaView,
+  TouchableOpacity,
+  Text,
   ActivityIndicator
 } from "react-native";
 import StoryItem from "./StoryItem";
+import StoryButton from "./StoryButton";
 
 const { width } = Dimensions.get("window");
 const perspective = width;
@@ -75,6 +79,7 @@ export default class Stories extends PureComponent {
   }
 
   _handleSelectedStoryOnLoaded = () => {
+    console.log("ready");
     this.setState({ ready: true });
   };
 
@@ -83,6 +88,7 @@ export default class Stories extends PureComponent {
   };
 
   _animateScrollView = evt => {
+    console.log("button", evt);
     let currentIndex = evt.nativeEvent.contentOffset.x / width;
     if (Number.isInteger(currentIndex)) {
       this.setState({
@@ -97,7 +103,7 @@ export default class Stories extends PureComponent {
 
     return (
       <View style={styles.container}>
-        {!ready && (
+        {/* {!ready && (
           <View
             style={{
               flex: 1,
@@ -109,10 +115,10 @@ export default class Stories extends PureComponent {
           >
             <ActivityIndicator size="large" color="gray" />
           </View>
-        )}
+        )} */}
         {stories
           .map((story, i) => (
-            <Animated.View
+            <View
               ref={this.stories[i]}
               style={StyleSheet.absoluteFill}
               key={story.id}
@@ -124,7 +130,7 @@ export default class Stories extends PureComponent {
                 multiplier={currentIndexMultiplier}
                 {...{ story }}
               />
-            </Animated.View>
+            </View>
           ))
           .reverse()}
         <Animated.ScrollView
@@ -152,6 +158,16 @@ export default class Stories extends PureComponent {
           decelerationRate={0.99}
           horizontal
         />
+        {/* <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <TouchableOpacity
+              onPress={event => this._animateScrollView(event)}
+              style={{ backgroundColor: "tomato" }}
+            >
+              <Text>PRess Me</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView> */}
       </View>
     );
   }

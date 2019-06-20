@@ -4,11 +4,12 @@ import { View, Image, StyleSheet, Dimensions } from "react-native";
 import { Video } from "expo-av";
 
 import Avatar from "./Avatar";
+import StoryButton from "./StoryButton";
 
 export default class StoryItem extends Component {
   state = {
     isPlaying: false
-  }
+  };
   videoRef = null;
   _handleVideoRef = async component => {
     this.videoRef = component;
@@ -16,12 +17,12 @@ export default class StoryItem extends Component {
   async componentDidUpdate() {
     const {
       story: { id },
-      multiplier,
+      multiplier
     } = this.props;
 
     if (this.videoRef !== null) {
       if (id && id === multiplier) {
-        this.videoRef.setStatusAsync({ shouldPlay: true })
+        this.videoRef.setStatusAsync({ shouldPlay: true });
       } else {
         this.videoRef.setStatusAsync({ shouldPlay: false, positionMillis: 0 });
       }
@@ -73,6 +74,7 @@ export default class StoryItem extends Component {
             />
           )}
           <Avatar {...{ user, avatar }} />
+          <StoryButton />
         </View>
         {/* {footerComponent && (
           <View style={styles.footer}>{footerComponent}</View>
@@ -85,7 +87,7 @@ export default class StoryItem extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   },
   image: {
     ...StyleSheet.absoluteFillObject,
